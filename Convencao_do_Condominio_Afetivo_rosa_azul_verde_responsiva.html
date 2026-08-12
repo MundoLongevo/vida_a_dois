@@ -1,0 +1,1091 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Convenção do Condomínio Afetivo</title>
+
+<style>
+  :root {
+    --cream: #fbf8f6;
+    --gold: #c98ca7;
+    --gold-light: #e8c8d7;
+    --green: #3f735c;
+    --green-2: #5f8f79;
+    --ink: #243b45;
+    --blue: #5f83a8;
+    --blue-light: #dbe7f1;
+    --pink: #c98ca7;
+    --pink-light: #f5e2ea;
+  }
+
+  * { box-sizing: border-box; }
+
+  html, body {
+    margin: 0;
+    padding: 0;
+    background: #e8eef2;
+    font-family: Georgia, "Palatino Linotype", "Book Antiqua", serif;
+    color: var(--ink);
+  }
+
+  body {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    padding: 36px 16px;
+  }
+
+  .stage { width: 100%; max-width: 720px; }
+
+  .card {
+    background: var(--cream);
+    border: 1.4pt solid var(--gold);
+    position: relative;
+    padding: 40px 42px 36px 42px;
+  }
+  .card::before {
+    content: "";
+    position: absolute;
+    top: 8px; left: 8px; right: 8px; bottom: 8px;
+    border: 0.6pt solid var(--gold-light);
+    pointer-events: none;
+  }
+
+  .ornament {
+    text-align: center;
+    font-size: 14px;
+    color: var(--gold);
+    letter-spacing: 8px;
+    margin-bottom: 4px;
+  }
+  .eyebrow {
+    text-align: center;
+    font-style: italic;
+    font-size: 11px;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--green-2);
+    margin-bottom: 10px;
+  }
+  .card h1 {
+    text-align: center;
+    font-style: italic;
+    font-weight: normal;
+    font-size: 28px;
+    color: var(--green);
+    margin: 0 0 6px 0;
+    line-height: 1.2;
+  }
+  .card .subtitle {
+    text-align: center;
+    font-style: italic;
+    font-size: 13px;
+    color: #466d82;
+    margin: 0 0 24px 0;
+  }
+  .rule {
+    width: 150px;
+    height: 0;
+    border-top: 2px solid var(--gold);
+    margin: 0 auto 24px auto;
+  }
+
+  .intro-copy {
+    font-size: 13.5px;
+    line-height: 1.75;
+    color: var(--ink);
+    text-align: center;
+    max-width: 520px;
+    margin: 0 auto 30px auto;
+  }
+
+  .btn {
+    display: block;
+    margin: 0 auto;
+    padding: 13px 34px;
+    background: var(--green);
+    color: var(--cream);
+    border: none;
+    font-family: Georgia, serif;
+    font-size: 13.5px;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background 0.15s ease;
+  }
+  .btn:hover { background: #315c49; }
+  .btn:disabled { background: #b8c8d0; cursor: not-allowed; }
+  .btn.secondary {
+    background: transparent;
+    color: var(--green);
+    border: 1pt solid var(--green);
+  }
+
+  .hint {
+    text-align: center;
+    font-size: 11px;
+    color: #9a5f78;
+    font-style: italic;
+    margin-top: 12px;
+    min-height: 14px;
+  }
+
+  /* ---------- progress ---------- */
+  .progress-label {
+    text-align: center;
+    font-size: 10.5px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--green-2);
+    margin-bottom: 8px;
+  }
+  .progress-bar {
+    width: 100%;
+    height: 3px;
+    background: #dfe8ee;
+    margin-bottom: 28px;
+    position: relative;
+  }
+  .progress-bar-fill {
+    height: 100%;
+    background: var(--green);
+    width: 0%;
+    transition: width 0.3s ease;
+  }
+
+  /* ---------- clause step ---------- */
+  .clause-step-num {
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    border: 1.4pt solid var(--green);
+    color: var(--green);
+    font-size: 20px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 16px auto;
+  }
+  .clause-step-title {
+    text-align: center;
+    font-size: 19px;
+    font-weight: 700;
+    color: var(--green);
+    margin: 0 0 18px 0;
+    line-height: 1.35;
+  }
+  .clause-step-body p {
+    font-size: 14px;
+    line-height: 1.7;
+    color: var(--ink);
+    text-align: justify;
+    margin: 0 0 12px 0;
+  }
+  .clause-step-body p.center {
+    text-align: center;
+    font-style: italic;
+    color: var(--green);
+  }
+  .clause-step-body p:last-child { margin-bottom: 0; }
+
+  .clause-step.grace .clause-step-body {
+    background: #e7f1eb;
+    border: 1pt solid var(--green);
+    padding: 16px 20px;
+    margin-bottom: 8px;
+  }
+
+  .accept-row {
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+    gap: 14px;
+    flex-wrap: wrap;
+  }
+  .back-link {
+    display: block;
+    text-align: center;
+    margin-top: 16px;
+    font-size: 11.5px;
+    color: var(--green-2);
+    font-style: italic;
+    cursor: pointer;
+    text-decoration: underline;
+  }
+
+  /* ---------- form fields ---------- */
+  .field-group { margin-bottom: 20px; }
+  .field-row { display: flex; gap: 20px; }
+  .field-row .field-group { flex: 1; }
+  label {
+    display: block;
+    font-size: 10.5px;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    color: var(--green-2);
+    margin-bottom: 6px;
+  }
+  input[type="text"] {
+    width: 100%;
+    font-family: Georgia, "Palatino Linotype", serif;
+    font-size: 16px;
+    font-style: italic;
+    color: var(--green);
+    background: transparent;
+    border: none;
+    border-bottom: 1pt solid var(--gold);
+    padding: 6px 2px 8px 2px;
+    outline: none;
+  }
+  input[type="text"]::placeholder { color: #a7b7c0; font-style: italic; }
+  input[type="text"]:focus { border-bottom: 1.4pt solid var(--green); }
+
+  /* ---------- doc screen ---------- */
+  #doc-screen, #clause-screen, #final-screen, #form-screen, #intro-screen { display: none; }
+
+  .toolbar {
+    display: flex;
+    justify-content: center;
+    gap: 14px;
+    margin-bottom: 18px;
+    flex-wrap: wrap;
+  }
+  .toolbar button {
+    font-family: Georgia, serif;
+    font-size: 12.5px;
+    letter-spacing: 1px;
+    padding: 11px 24px;
+    cursor: pointer;
+    border: 1pt solid var(--green);
+    background: var(--green);
+    color: var(--cream);
+  }
+  .toolbar button.secondary { background: transparent; color: var(--green); }
+  .toolbar button:disabled { opacity: 0.6; cursor: wait; }
+
+  #pdf-target { background: var(--cream); }
+
+  .page { position: relative; padding: 30px 26px; }
+  .frame {
+    position: relative;
+    border: 1.4pt solid var(--gold);
+    padding: 20px 38px 26px 38px;
+  }
+  .frame::before {
+    content: "";
+    position: absolute;
+    top: 8px; left: 8px; right: 8px; bottom: 8px;
+    border: 0.6pt solid var(--gold-light);
+    pointer-events: none;
+  }
+  .corner {
+    position: absolute;
+    width: 18px;
+    height: 18px;
+    border: 1.4pt solid var(--green);
+  }
+  .corner.tl { top: -1.4pt; left: -1.4pt; border-right: none; border-bottom: none; }
+  .corner.tr { top: -1.4pt; right: -1.4pt; border-left: none; border-bottom: none; }
+  .corner.bl { bottom: -1.4pt; left: -1.4pt; border-right: none; border-top: none; }
+  .corner.br { bottom: -1.4pt; right: -1.4pt; border-left: none; border-top: none; }
+
+  .compact-header { text-align: center; margin-bottom: 24px; }
+  .compact-header h1 {
+    font-style: italic;
+    font-weight: normal;
+    font-size: 32px;
+    color: var(--green);
+    margin: 0 0 5px 0;
+    line-height: 1.15;
+  }
+  .compact-header .subtitle {
+    font-style: italic;
+    font-size: 13px;
+    color: #466d82;
+    margin: 3px 0 8px 0;
+  }
+  .rule-sm {
+    width: 150px;
+    height: 0;
+    border-top: 0.7pt solid var(--gold);
+    margin: 0 auto;
+  }
+
+  .clause { margin-bottom: 17px; break-inside: avoid; page-break-inside: avoid; }
+  .clause-title { display: flex; align-items: baseline; gap: 10px; margin-bottom: 5px; }
+  .clause-num {
+    flex: none;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: 1pt solid var(--green);
+    color: var(--green);
+    font-size: 14px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: Georgia, serif;
+  }
+  .clause-title h3 { margin: 0; font-size: 16px; font-weight: 700; color: var(--green); }
+  .clause p {
+    margin: 0 0 6px 40px;
+    font-size: 12px;
+    line-height: 1.55;
+    color: var(--ink);
+    text-align: justify;
+  }
+  .clause p.center { text-align: left; font-style: italic; color: var(--green); }
+  .clause p:last-child { margin-bottom: 0; }
+
+  .clause.grace {
+    margin-top: 8px;
+    padding: 15px 20px;
+    border: 1pt solid var(--green);
+    background: #e7f1eb;
+  }
+  .clause.grace .clause-num { background: var(--green); color: var(--cream); }
+  .clause.grace p { margin-left: 40px; }
+
+  .final-block {
+    margin-top: 20px;
+    padding-top: 15px;
+    border-top: 0.6pt solid var(--gold);
+    text-align: center;
+  }
+  .final-block h3 {
+    margin: 0 0 8px 0;
+    font-style: italic;
+    font-weight: 700;
+    font-size: 15px;
+    color: var(--green);
+  }
+  .final-block p {
+    font-size: 12px;
+    line-height: 1.5;
+    color: var(--ink);
+    margin: 0 auto 8px auto;
+    max-width: 520px;
+  }
+  .final-block p.center { font-style: italic; color: var(--green); }
+
+  .signature-block { margin-top: 24px; text-align: center; }
+  .signature-block .place-date {
+    font-style: italic;
+    font-size: 12px;
+    color: #466d82;
+    margin-top: 14px;
+    margin-bottom: 16px;
+  }
+  .signers { display: flex; justify-content: center; gap: 60px; flex-wrap: wrap; }
+  .signer { text-align: center; max-width: 240px; }
+  .signer .line { width: 190px; border-top: 0.7pt solid var(--green); margin-bottom: 4px; }
+  .signer .name { font-style: italic; font-size: 19px; color: var(--green); word-wrap: break-word; }
+  .signer .role { font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--green-2); }
+
+  .footer-mark {
+    text-align: center;
+    margin-top: 18px;
+    font-size: 10.5px;
+    color: var(--gold);
+    letter-spacing: 1.5px;
+  }
+
+  @media print {
+    body { background: var(--cream); padding: 0; }
+    .toolbar { display: none; }
+  }
+
+  @media (max-width: 600px) {
+    .field-row { flex-direction: column; gap: 0; }
+    .card { padding: 30px 22px; }
+    .frame { padding: 18px 18px 22px 18px; }
+    .clause p, .final-block p { margin-left: 0; }
+    .signers { gap: 30px; }
+  }
+
+/* ---------- mobile-friendly ---------- */
+@media (max-width: 600px) {
+  body { padding: 10px; }
+  .stage { max-width: 100%; }
+  .card { padding: 26px 18px 24px 18px; }
+  .card h1 { font-size: 25px; }
+  .subtitle { font-size: 12.5px; }
+  .intro-copy { font-size: 14px; line-height: 1.65; }
+  .btn, .toolbar button {
+    width: 100%;
+    min-height: 48px;
+    padding: 13px 16px;
+    font-size: 13px;
+  }
+  .accept-row { gap: 10px; }
+  .clause-step-title { font-size: 18px; }
+  .clause-step-body p { font-size: 15px; line-height: 1.65; }
+  .field-row { flex-direction: column; gap: 0; }
+  input[type="text"] { font-size: 17px; min-height: 42px; }
+  .toolbar { gap: 8px; }
+  .page { padding: 10px; }
+  .frame { padding: 18px 15px 22px 15px; }
+  .compact-header h1 { font-size: 26px; }
+  .clause p, .final-block p { margin-left: 0; font-size: 13px; }
+  .signers { gap: 28px; }
+  .signer .line { width: 170px; }
+}
+
+
+/* ---------- gamificação ---------- */
+.gamification-panel {
+  margin: 16px auto 20px;
+  max-width: 760px;
+  padding: 16px 18px;
+  border: 1px solid rgba(130,95,45,.22);
+  border-radius: 16px;
+  background: linear-gradient(135deg,#fff8fb,#eef5f8,#f1f8f3);
+  box-shadow: 0 5px 18px rgba(80,55,25,.08);
+}
+.gamification-top {
+  display:flex; justify-content:space-between; align-items:center;
+  gap:12px; flex-wrap:wrap; margin-bottom:10px;
+}
+.gamification-title { font-weight:700; color:#6e512c; }
+.progress-label { font-size:12px; color:#765f42; }
+.progress-track {
+  height:12px; border-radius:99px; background:#e4d7c1; overflow:hidden;
+  border:1px solid rgba(110,81,44,.12);
+}
+.progress-fill {
+  height:100%; width:0%; border-radius:99px;
+  background: linear-gradient(90deg,#c98ca7,#5f83a8,#5f8f79);
+  transition:width .45s ease;
+}
+.medals {
+  display:flex; gap:8px; flex-wrap:wrap; margin-top:13px;
+}
+.medal {
+  width:38px; height:38px; border-radius:50%;
+  display:flex; align-items:center; justify-content:center;
+  background:#dfe8ee; filter:grayscale(1); opacity:.42;
+  border:1px solid #c5d1d9; font-size:20px;
+  transition:all .35s ease;
+}
+.medal.unlocked {
+  filter:none; opacity:1; transform:scale(1.08);
+  box-shadow:0 3px 10px rgba(112,80,30,.2);
+  background:#f7e7ee;
+}
+.medal-note { margin-top:8px; font-size:11px; color:#687b84; }
+.celebration {
+  display:none; margin-top:10px; padding:9px 12px; border-radius:10px;
+  background:#f7e7ee; color:#76516a; font-size:13px; font-weight:600;
+}
+.celebration.show { display:block; animation:pop .35s ease; }
+@keyframes pop { from {transform:scale(.96);opacity:.3} to {transform:scale(1);opacity:1} }
+
+
+/* Leitura confortável das cláusulas no celular */
+@media (max-width: 600px) {
+  .clause-step-title {
+    font-size: 21px !important;
+    line-height: 1.25 !important;
+  }
+
+  .clause-step-body p {
+    font-size: 17px !important;
+    line-height: 1.7 !important;
+    letter-spacing: 0 !important;
+    overflow-wrap: break-word;
+    word-break: normal;
+  }
+
+  .clause-step {
+    padding-left: 14px !important;
+    padding-right: 14px !important;
+  }
+
+  .clause-step-body {
+    max-width: 100% !important;
+  }
+}
+
+
+/* ---------- compatibilidade extra para telas muito estreitas ---------- */
+html {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+body {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+  -webkit-text-size-adjust: 100%;
+}
+
+.stage,
+.card,
+.gamification-panel {
+  min-width: 0;
+  max-width: 100%;
+}
+
+img, svg, video, canvas {
+  max-width: 100%;
+  height: auto;
+}
+
+button, input, textarea, select {
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+.gamification-title,
+.medal-note,
+.celebration {
+  overflow-wrap: anywhere;
+}
+
+@media (max-width: 360px) {
+  body { padding: 7px; }
+  .card { padding: 22px 14px 20px 14px; }
+  .card h1 { font-size: 23px; }
+  .card .subtitle { font-size: 12px; margin-bottom: 18px; }
+  .intro-copy { font-size: 13.5px; line-height: 1.6; }
+  .clause-step-title { font-size: 19px !important; }
+  .clause-step-body p { font-size: 16px !important; line-height: 1.65 !important; }
+  .gamification-panel { padding: 13px 12px; }
+  .medal { width: 34px; height: 34px; font-size: 18px; }
+}
+
+@media (min-width: 601px) {
+  .stage { width: min(720px, 100%); }
+}
+
+</style>
+</head>
+<body>
+
+<div class="stage">
+
+  <!-- ============ INTRO SCREEN ============ -->
+  <div id="intro-screen" style="display:block;">
+    <div class="card">
+      <div class="ornament">— ❦ —</div>
+      <div class="eyebrow">Registrada em cartório do coração</div>
+      <h1>Convenção do Condomínio Afetivo</h1>
+      <p class="subtitle">Regulamento para dois moradores que se gostam, mas ainda estão aprendendo a morar juntos.</p>
+      <div class="rule"></div>
+      <p class="intro-copy">Abra este arquivo no celular, leia cada cláusula e marque seu aceite. No final, vocês preenchem os nomes, local e data.<br><br>A seguir, cada cláusula vai aparecer uma de cada vez. Leiam com calma e deem o aceite pra seguir em frente. No final, é só assinar e baixar o PDF completo.</p>
+<p style="text-align:center;max-width:600px;margin:18px auto 22px;font-size:12.5px;line-height:1.6;color:#687b84;font-style:italic;">
+Esta Convenção foi criada pelo <strong>psicólogo Ricardo de Faria Barros, CRP 01/7844</strong>, com base em sua experiência em <strong>assembleias afetivas</strong>.
+</p>
+      <button class="btn" onclick="iniciarClausulas()">Começar a leitura</button>
+    </div>
+  </div>
+
+  <!-- ============ CLAUSE-BY-CLAUSE SCREEN ============ -->
+  <div id="clause-screen">
+    <div class="card">
+      <div class="progress-label" id="progress-label">Cláusula 1 de 16</div>
+<div class="gamification-panel" id="gamification-panel">
+  <div class="gamification-top">
+    <div class="gamification-title">🏆 Sua jornada pelo Condomínio Afetivo</div>
+    <div class="progress-label" id="progress-label">0% concluído</div>
+  </div>
+  <div class="progress-track"><div class="progress-fill" id="progress-fill"></div></div>
+  <div class="medals" id="medals">
+    <div class="medal" data-medal="1" title="Primeiro passo">🏠</div>
+    <div class="medal" data-medal="2" title="Boa conversa">💬</div>
+    <div class="medal" data-medal="3" title="Mundo do outro">🌎</div>
+    <div class="medal" data-medal="4" title="Reparação">🌷</div>
+    <div class="medal" data-medal="5" title="Parceria">🤝</div>
+    <div class="medal" data-medal="6" title="Namoro">🥂</div>
+    <div class="medal" data-medal="7" title="Encantamento">✨</div>
+    <div class="medal" data-medal="8" title="Aliança afetiva">❤️</div>
+  </div>
+  <div class="medal-note">Cada medalha representa uma conquista afetiva ao longo da leitura.</div>
+  <div class="celebration" id="celebration"></div>
+</div>
+
+      <div class="progress-bar"><div class="progress-bar-fill" id="progress-fill"></div></div>
+
+      <div id="clause-step-container"></div>
+
+      <div class="accept-row">
+        <button class="btn" id="accept-btn" onclick="aceitarClausula()">Aceito esta cláusula</button>
+      </div>
+      <div class="back-link" id="back-link" onclick="voltarClausula()">← voltar à cláusula anterior</div>
+    </div>
+  </div>
+
+  <!-- ============ FINAL DISPOSITION SCREEN ============ -->
+  <div id="final-screen">
+    <div class="card">
+      <div class="ornament">❧</div>
+      <h1 style="font-size:22px;">Disposição final</h1>
+      <p class="intro-copy" style="font-style:italic;">Que este condomínio tenha mais risadas que assembleias, mais abraços que notificações, mais curiosidade pelo mundo do outro, mais reconciliações que silêncios e mais vontade de cultivar a parceria do que de ter razão.</p>
+      <p class="intro-copy" style="font-style:italic; color:var(--green);">Ata aprovada por unanimidade dos dois moradores — com direito a revisão sempre que o amor aprender um jeito novo de falar.</p>
+      <button class="btn" onclick="irParaFormulario()">Concordo com tudo — seguir pra assinatura</button>
+      <div class="back-link" onclick="voltarParaUltimaClausula()">← voltar às cláusulas</div>
+    </div>
+  </div>
+
+  <!-- ============ SIGNATURE FORM SCREEN ============ -->
+  <div id="form-screen">
+    <div class="card">
+      <div class="ornament">— ❦ —</div>
+      <div class="eyebrow">Última etapa</div>
+      <h1 style="font-size:24px;">Assinatura</h1>
+      <p class="subtitle">Preencham os dados pra fechar a convenção.</p>
+      <div class="rule"></div>
+
+      <div class="field-row">
+        <div class="field-group">
+          <label for="nome1">Nome completo — condômino</label>
+          <input type="text" id="nome1" placeholder="Nome do primeiro morador ...">
+        </div>
+        <div class="field-group">
+          <label for="nome2">Nome completo — condômina</label>
+          <input type="text" id="nome2" placeholder="Nome do segundo morador ...">
+        </div>
+      </div>
+
+      <div class="field-row">
+        <div class="field-group">
+          <label for="local">Local</label>
+          <input type="text" id="local" placeholder="Sua cidade-UF">
+        </div>
+        <div class="field-group">
+          <label for="data">Data</label>
+          <input type="text" id="data" placeholder="Setembro de 2026">
+        </div>
+      </div>
+
+      <button class="btn" id="generate-btn" onclick="gerarDocumento()">Gerar convenção assinada</button>
+      <div class="hint" id="form-hint"></div>
+    </div>
+  </div>
+
+  <!-- ============ FINAL DOCUMENT SCREEN ============ -->
+  <div id="doc-screen">
+    <div class="toolbar">
+      <button class="secondary" onclick="voltarForm()">← Editar dados</button>
+      <button id="download-btn" onclick="baixarPdf()">Concluir e guardar</button>
+    </div>
+
+    <div id="pdf-target">
+      <div class="page">
+        <div class="frame">
+          <div class="corner tl"></div>
+          <div class="corner tr"></div>
+          <div class="corner bl"></div>
+          <div class="corner br"></div>
+
+          <div class="compact-header">
+            <div class="ornament">— ❦ —</div>
+            <div class="eyebrow">Registrada em cartório do coração</div>
+            <h1>Convenção do Condomínio Afetivo</h1>
+            <p class="subtitle">Regulamento para dois moradores que se gostam, mas ainda estão aprendendo a morar juntos.</p>
+            <div class="rule-sm"></div>
+          </div>
+
+          <div class="clauses-columns">
+
+            <div class="clause">
+              <div class="clause-title"><div class="clause-num">1</div><h3>Da proibição de abandonar o prédio</h3></div>
+              <p>Em briga, ninguém desaparece nem abandona o prédio. Mas cada morador tem direito a um tempo de recolhimento: ficar quieto, respirar, organizar o que sente e recuperar a delicadeza necessária para voltar ao encontro. Esse tempo também precisa ser acolhido pelo outro, sem cobranças, perseguições ou interpretações de abandono.
+
+Só há uma regra: o recolhimento não pode se transformar em moradia. Ele precisa caber no tempo das delicadezas, de cada recomeçar. Porque afastar-se por um instante pode ser cuidado; prolongar o afastamento indefinidamente começa a ferir o vínculo.</p>
+            </div>
+
+            <div class="clause">
+              <div class="clause-title"><div class="clause-num">2</div><h3>Dos sotaques diferentes do amor</h3></div>
+              <p>Um ama em poesia e delicadeza; o outro ama em ação e objetividade. Não são defeitos: são sotaques diferentes para dizer a mesma frase: “eu me importo com você.”</p>
+            </div>
+
+            <div class="clause">
+              <div class="clause-title"><div class="clause-num">3</div><h3>Da proibição de interpretar tudo como abandono</h3></div>
+              <p>Nem todo silêncio é despejo. Nem todo gesto de afastamento significa rejeição. Às vezes, quem se sente rejeitado olha para um pequeno fato pelas lentes da emoção e transforma um “nadinha de nada” para o outro em algo enorme dentro de si. Antes de imaginar abandono, pergunte se não é tua percepção que está distorcida. Antes de concluir que não é amado, converse sobre como se sentiu. Não é sobre ele (a), é sobre você.
+
+</p>
+            </div>
+
+            <div class="clause">
+              <div class="clause-title"><div class="clause-num">4</div><h3>Do direito de voltar pra casa</h3></div>
+              <p>Depois da briga, os dois podem voltar à conversa sem precisar vencer ou provar quem tinha razão.</p>
+              <p class="center">O objetivo não é ganhar. É continuar morando bem juntos.</p>
+            </div>
+
+            <div class="clause">
+              <div class="clause-title"><div class="clause-num">5</div><h3>Do chilique, em dose homeopática</h3></div>
+              <p>Um pequeno chilique é permitido, mas não pode morar na casa. Em reincidência: água, respiração, oração, humor e um pouco de tempo para a emoção baixar.
+
+E que sempre exista a chance de virar uma surpresa: um gesto inesperado de reconciliação, de quem reconhece que pisou na bola, mesmo sem compreender completamente o porquê. Afinal, às vezes os dois vivem e percebem a realidade por lentes diferentes; o que pareceu pequeno para um pode ter sido grande para o outro. Nesses casos, admitir o impacto pode ser mais importante do que descobrir quem tinha razão.</p>
+            </div>
+
+            <div class="clause">
+              <div class="clause-title"><div class="clause-num">6</div><h3>Do WhatsApp em caso de incêndio</h3></div>
+              <p>Questão importante não se resolve em texto longo, áudio ou mensagem no auge da raiva. Espera a poeira baixar, resolve olho no olho.</p>
+            </div>
+
+            <div class="clause">
+              <div class="clause-title"><div class="clause-num">7</div><h3>Da porta da toca</h3></div>
+              <p>Cada um tem direito à sua toca, pra respirar e organizar por dentro. Mas ninguém mora escondido lá pra sempre: em algum momento é preciso perguntar, podemos conversar?</p>
+            </div>
+
+            <div class="clause">
+              <div class="clause-title"><div class="clause-num">8</div><h3>Da preservação do patrimônio afetivo</h3></div>
+              <p>Antes de jogar tudo fora por um episódio ruim, lembra do que já foi construído: viagens, risadas, cuidados, tudo que não cabe em foto. Patrimônio afetivo não se demole por uma assembleia que deu errado.</p>
+            </div>
+
+            <div class="clause">
+              <div class="clause-title"><div class="clause-num">9</div><h3>Da visita ao mundo do outro</h3></div>
+              <p>Amar também é conhecer a paisagem onde o outro existe. Interessa-se pelas pessoas que ele ama, pelas histórias que o formaram, pelos lugares de que gosta, pelos assuntos que o animam e pelos sonhos que ainda carrega.</p>
+              <p class="center">Mas ninguém precisa abandonar a própria casa para morar na casa do outro. Envolver-se com o mundo do parceiro é ampliar o próprio mundo, não perder a própria identidade.</p>
+            </div>
+
+            <div class="clause">
+              <div class="clause-title"><div class="clause-num">10</div><h3>Do restabelecimento da harmonia</h3></div>
+              <p>Briguinha não pode virar temporada. Depois que a poeira baixar, alguém precisa fazer um movimento concreto para reabrir a porta: um café, um abraço, uma mensagem carinhosa, um convite pra conversar, um pedido de desculpas ou, se for o caso, flores para o delegado.</p>
+              <p class="center">O gesto não significa que um perdeu a razão. Significa que os dois escolheram não deixar o aborrecimento administrar o condomínio.</p>
+            </div>
+
+            <div class="clause">
+              <div class="clause-title"><div class="clause-num">11</div><h3>Da aliança que vai além do aro de metal</h3></div>
+              <p>Parceria se cultiva. Intimidade se constrói. Cumplicidade se alimenta de pequenas coisas: conversa, toque, humor, confiança, planos, segredos bem guardados, cuidado e vontade de conhecer o outro de novo, mesmo depois de muito tempo.</p>
+              <p class="center">O compromisso não é apenas permanecer juntos. É formar uma aliança em que os dois saibam que existe alguém ao lado para celebrar, atravessar dificuldades, inventar caminhos e cuidar do que construíram.</p>
+            </div>
+
+            <div class="clause">
+              <div class="clause-title"><div class="clause-num">12</div><h3>Do namoro que não pode entrar em férias</h3></div>
+              <p>Morar junto não cancela o namoro. A rotina pode cuidar da casa, pagar as contas e organizar a vida, mas não pode ocupar todos os espaços do casal. Os dois se comprometem a continuar se escolhendo, convidando, surpreendendo e criando momentos que tenham cheiro de começo.</p>
+              <p class="center">Um pode dizer ao outro: vamos sair? Vamos tomar um vinho? Vamos ouvir aquela música? Vamos caminhar sem pressa? Vamos fazer qualquer coisa que nos devolva a sensação de que ainda estamos namorando?</p>
+            </div>
+            <div class="clause">
+              <div class="clause-title"><div class="clause-num">13</div><h3>Do encantamento, do erotismo e dos espaços de acasalamento</h3></div>
+              <p>O desejo também precisa de cuidado. O erotismo não deve ficar entregue apenas ao acaso, à disposição ou à sobra de energia depois da rotina. Os dois podem provocar o encontro, cuidar da aparência um para o outro, criar clima, brincar, paquerar, tocar, elogiar, desejar e abrir espaço para a intimidade, sempre com respeito e consentimento.</p>
+              <p class="center">Não deixar que os olhos fiquem opacos diante daquilo que se tornou familiar. Continuar enxergando a beleza do outro, o corpo do outro, a graça do outro, a pessoa que ainda existe por trás das tarefas e dos papéis. O casal não é uma empresa que divide teto e despesas. É uma aliança viva que precisa reservar espaço para o romance, a brincadeira, o prazer e o mistério de ainda se descobrir.</p>
+            </div>
+            <div class="clause">
+              <div class="clause-title"><div class="clause-num">14</div><h3>Dos diferentes jeitos de amar</h3></div>
+              <p>Os dois revisam os amortecedores antes de curva fechada e dia de pouca paciência. Cada pessoa pode demonstrar amor de um jeito diferente: por palavras, por cuidado e atitudes, por tempo junto, por carinho e toque, ou por pequenos gestos e presentes.</p>
+              <p class="center">O que parece falta de amor pode ser apenas uma linguagem diferente. Antes de reclamar que o outro não ama, vale descobrir como ele costuma dizer eu te amo.</p>
+            </div>
+
+            <div class="clause">
+              <div class="clause-title"><div class="clause-num">15</div><h3>De aprender a falar a linguagem do outro</h3></div>
+              <p>Um pode precisar de palavras, outro de atitudes. Um pode querer mais presença e tempo juntos, outro demonstrar carinho fazendo coisas, ajudando, tocando ou cuidando.</p>
+              <p class="center">Nenhum jeito é automaticamente melhor. O compromisso é aprender a reconhecer a linguagem afetiva do outro, para que ninguém precise ficar dizendo eu te amo numa língua que o outro não consegue ouvir.</p>
+            </div>
+
+            <div class="clause grace">
+              <div class="clause-title"><div class="clause-num">16</div><h3>Da cota de graça</h3></div>
+              <p>Todo morador deste Condomínio Afetivo recebe de graça, sem pedir e sem prazo de validade: paciência, carinho, admiração, atenção, cuidado, respeito e consideração, um pelo outro.</p>
+              <p class="center">É assim porque os dois decidiram que seria assim.</p>
+            </div>
+          </div>
+
+          <div class="final-block">
+            <h3>Disposição final</h3>
+            <p>Que este condomínio tenha mais risadas que assembleias, mais abraços que notificações, mais curiosidade pelo mundo do outro, mais reconciliações que silêncios e mais vontade de cultivar a parceria do que de ter razão.</p>
+            <p class="center">Ata aprovada por unanimidade dos dois moradores — com direito a revisão sempre que o amor aprender um jeito novo de falar.</p>
+          </div>
+
+          <div class="signature-block">
+            <div class="rule-sm"></div>
+            <p class="place-date" id="place-date-out">Sua cidade-UF, mês e ano.</p>
+            <div class="signers">
+              <div class="signer">
+                <div class="line"></div>
+                <div class="name" id="nome1-out">Primeiro morador</div>
+                <div class="role">Condômino</div>
+              </div>
+              <div class="signer">
+                <div class="line"></div>
+                <div class="name" id="nome2-out">Segundo morador</div>
+                <div class="role">Condômina</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="footer-mark">Condomínio Afetivo</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+var clauses = [
+  { num: 1, title: 'Da proibição de abandonar o prédio',
+    paragraphs: [
+      { text: 'Em briga, ninguém desaparece nem abandona o prédio. Mas cada morador tem direito a um tempo de recolhimento: ficar quieto, respirar, organizar o que sente e recuperar a delicadeza necessária para voltar ao encontro. Esse tempo também precisa ser acolhido pelo outro, sem cobranças, perseguições ou interpretações de abandono. Só há uma regra: o recolhimento não pode se transformar em moradia. Ele precisa caber no tempo das delicadezas, de cada recomeçar. Porque afastar-se por um instante pode ser cuidado; prolongar o afastamento indefinidamente começa a ferir o vínculo.' }
+  ]},
+  { num: 2, title: 'Dos sotaques diferentes do amor',
+    paragraphs: [
+      { text: 'Um ama em poesia e delicadeza; o outro ama em ação e objetividade. Não são defeitos: são sotaques diferentes para dizer a mesma frase: “eu me importo com você.”' }
+  ]},
+  { num: 3, title: 'Da proibição de interpretar tudo como abandono',
+    paragraphs: [
+      { text: 'Nem todo silêncio é despejo. Nem todo gesto de afastamento significa rejeição. Às vezes, quem se sente rejeitado olha para um pequeno fato pelas lentes da emoção e transforma um “nadinha de nada” para o outro em algo enorme dentro de si. Antes de imaginar abandono, pergunte se não é tua percepção que está distorcida. Antes de concluir que não é amado, converse sobre como se sentiu. Não é sobre ele (a), é sobre você.' }
+  ]},
+  { num: 4, title: 'Do direito de voltar pra casa',
+    paragraphs: [
+      { text: 'Depois da briga, os dois podem voltar à conversa sem precisar vencer ou provar quem tinha razão.' },
+      { text: 'O objetivo não é ganhar. É continuar morando bem juntos.', center: true }
+  ]},
+  { num: 5, title: 'Do chilique, em dose homeopática',
+    paragraphs: [
+      { text: 'Um pequeno chilique é permitido, mas não pode morar na casa. Em reincidência: água, respiração, oração, humor e um pouco de tempo para a emoção baixar. E que sempre exista a chance de virar uma surpresa: um gesto inesperado de reconciliação, de quem reconhece que pisou na bola, mesmo sem compreender completamente o porquê. Afinal, às vezes os dois vivem e percebem a realidade por lentes diferentes; o que pareceu pequeno para um pode ter sido grande para o outro. Nesses casos, admitir o impacto pode ser mais importante do que descobrir quem tinha razão.' }
+  ]},
+  { num: 6, title: 'Do WhatsApp em caso de incêndio',
+    paragraphs: [
+      { text: 'Questão importante não se resolve em texto longo, áudio ou mensagem no auge da raiva. Espera a poeira baixar, resolve olho no olho.' }
+  ]},
+  { num: 7, title: 'Da porta da toca',
+    paragraphs: [
+      { text: 'Cada um tem direito à sua toca, pra respirar e organizar por dentro. Mas ninguém mora escondido lá pra sempre: em algum momento é preciso perguntar, podemos conversar?' }
+  ]},
+  { num: 8, title: 'Da preservação do patrimônio afetivo',
+    paragraphs: [
+      { text: 'Antes de jogar tudo fora por um episódio ruim, lembra do que já foi construído: viagens, risadas, cuidados, tudo que não cabe em foto. Patrimônio afetivo não se demole por uma assembleia que deu errado.' }
+  ]},
+  { num: 9, title: 'Da visita ao mundo do outro',
+    paragraphs: [
+      { text: 'Amar também é conhecer a paisagem onde o outro existe. Interessa-se pelas pessoas que ele ama, pelas histórias que o formaram, pelos lugares de que gosta, pelos assuntos que o animam e pelos sonhos que ainda carrega.' },
+      { text: 'Mas ninguém precisa abandonar a própria casa para morar na casa do outro. Envolver-se com o mundo do parceiro é ampliar o próprio mundo, não perder a própria identidade.', center: true }
+  ]},
+  { num: 10, title: 'Do restabelecimento da harmonia',
+    paragraphs: [
+      { text: 'Briguinha não pode virar temporada. Depois que a poeira baixar, alguém precisa fazer um movimento concreto para reabrir a porta: um café, um abraço, uma mensagem carinhosa, um convite pra conversar, um pedido de desculpas ou, se for o caso, flores para o delegado.' },
+      { text: 'O gesto não significa que um perdeu a razão. Significa que os dois escolheram não deixar o aborrecimento administrar o condomínio.', center: true }
+  ]},
+  { num: 11, title: 'Da aliança que vai além do aro de metal',
+    paragraphs: [
+      { text: 'Parceria se cultiva. Intimidade se constrói. Cumplicidade se alimenta de pequenas coisas: conversa, toque, humor, confiança, planos, segredos bem guardados, cuidado e vontade de conhecer o outro de novo, mesmo depois de muito tempo.' },
+      { text: 'O compromisso não é apenas permanecer juntos. É formar uma aliança em que os dois saibam que existe alguém ao lado para celebrar, atravessar dificuldades, inventar caminhos e cuidar do que construíram.', center: true }
+  ]},
+  { num: 12, title: 'Do namoro que não pode entrar em férias',
+    paragraphs: [
+      { text: 'Morar junto não cancela o namoro. A rotina pode cuidar da casa, pagar as contas e organizar a vida, mas não pode ocupar todos os espaços do casal. Os dois se comprometem a continuar se escolhendo, convidando, surpreendendo e criando momentos que tenham cheiro de começo.' },
+      { text: 'Um pode dizer ao outro: vamos sair? Vamos tomar um vinho? Vamos ouvir aquela música? Vamos caminhar sem pressa? Vamos fazer qualquer coisa que nos devolva a sensação de que ainda estamos namorando?', center: true }
+  ]},
+  { num: 13, title: 'Do encantamento, do erotismo e dos espaços de acasalamento',
+    paragraphs: [
+      { text: 'O desejo também precisa de cuidado. O erotismo não deve ficar entregue apenas ao acaso, à disposição ou à sobra de energia depois da rotina. Os dois podem provocar o encontro, cuidar da aparência um para o outro, criar clima, brincar, paquerar, tocar, elogiar, desejar e abrir espaço para a intimidade, sempre com respeito e consentimento.' },
+      { text: 'Não deixar que os olhos fiquem opacos diante daquilo que se tornou familiar. Continuar enxergando a beleza do outro, o corpo do outro, a graça do outro, a pessoa que ainda existe por trás das tarefas e dos papéis. O casal não é uma empresa que divide teto e despesas. É uma aliança viva que precisa reservar espaço para o romance, a brincadeira, o prazer e o mistério de ainda se descobrir.', center: true }
+  ]},
+  { num: 14, title: 'Dos diferentes jeitos de amar',
+    paragraphs: [
+      { text: 'Os dois revisam os amortecedores antes de curva fechada e dia de pouca paciência. Cada pessoa pode demonstrar amor de um jeito diferente: por palavras, por cuidado e atitudes, por tempo junto, por carinho e toque, ou por pequenos gestos e presentes.' },
+      { text: 'O que parece falta de amor pode ser apenas uma linguagem diferente. Antes de reclamar que o outro não ama, vale descobrir como ele costuma dizer eu te amo.', center: true }
+  ]},
+  { num: 15, title: 'De aprender a falar a linguagem do outro',
+    paragraphs: [
+      { text: 'Um pode precisar de palavras, outro de atitudes. Um pode querer mais presença e tempo juntos, outro demonstrar carinho fazendo coisas, ajudando, tocando ou cuidando.' },
+      { text: 'Nenhum jeito é automaticamente melhor. O compromisso é aprender a reconhecer a linguagem afetiva do outro, para que ninguém precise ficar dizendo eu te amo numa língua que o outro não consegue ouvir.', center: true }
+  ]},
+  { num: 16, title: 'Da cota de graça', grace: true,
+    paragraphs: [
+      { text: 'Todo morador deste Condomínio Afetivo recebe de graça, sem pedir e sem prazo de validade: paciência, carinho, admiração, atenção, cuidado, respeito e consideração, um pelo outro.' },
+      { text: 'É assim porque os dois decidiram que seria assim.', center: true }
+  ]}
+];
+
+var currentClause = 0;
+
+function iniciarClausulas() {
+  document.getElementById('intro-screen').style.display = 'none';
+  document.getElementById('clause-screen').style.display = 'block';
+  currentClause = 0;
+  renderClause();
+  window.scrollTo(0, 0);
+}
+
+function renderClause() {
+  var c = clauses[currentClause];
+  document.getElementById('progress-label').textContent = 'Cláusula ' + c.num + ' de ' + clauses.length;
+  document.getElementById('progress-fill').style.width = (((currentClause + 1) / clauses.length) * 100) + '%';
+
+  var bodyHtml = '';
+  c.paragraphs.forEach(function (p) {
+    bodyHtml += '<p' + (p.center ? ' class="center"' : '') + '>' + p.text + '</p>';
+  });
+
+  var html =
+    '<div class="clause-step' + (c.grace ? ' grace' : '') + '">' +
+      '<div class="clause-step-num">' + c.num + '</div>' +
+      '<div class="clause-step-title">' + c.title + '</div>' +
+      '<div class="clause-step-body">' + bodyHtml + '</div>' +
+    '</div>';
+
+  document.getElementById('clause-step-container').innerHTML = html;
+
+  var acceptBtn = document.getElementById('accept-btn');
+  acceptBtn.textContent = (currentClause === clauses.length - 1)
+    ? 'Aceito esta cláusula — seguir para o fecho'
+    : 'Aceito esta cláusula';
+
+  document.getElementById('back-link').style.visibility = (currentClause === 0) ? 'hidden' : 'visible';
+}
+
+function aceitarClausula() {
+  if (currentClause < clauses.length - 1) {
+    currentClause++;
+    renderClause();
+    window.scrollTo(0, 0);
+  } else {
+    document.getElementById('clause-screen').style.display = 'none';
+    document.getElementById('final-screen').style.display = 'block';
+    window.scrollTo(0, 0);
+  }
+}
+
+function voltarClausula() {
+  if (currentClause > 0) {
+    currentClause--;
+    renderClause();
+    window.scrollTo(0, 0);
+  }
+}
+
+function voltarParaUltimaClausula() {
+  document.getElementById('final-screen').style.display = 'none';
+  document.getElementById('clause-screen').style.display = 'block';
+  currentClause = clauses.length - 1;
+  renderClause();
+  window.scrollTo(0, 0);
+}
+
+function irParaFormulario() {
+  document.getElementById('final-screen').style.display = 'none';
+  document.getElementById('form-screen').style.display = 'block';
+  window.scrollTo(0, 0);
+}
+
+function gerarDocumento() {
+  var nome1 = document.getElementById('nome1').value.trim();
+  var nome2 = document.getElementById('nome2').value.trim();
+  var local = document.getElementById('local').value.trim();
+  var data = document.getElementById('data').value.trim();
+  var hint = document.getElementById('form-hint');
+
+  if (!nome1 || !nome2) {
+    hint.textContent = 'Preencham os dois nomes completos pra gerar o documento.';
+    return;
+  }
+  if (!local || !data) {
+    hint.textContent = 'Preencham também o local e a data da assinatura.';
+    return;
+  }
+  hint.textContent = '';
+
+  document.getElementById('nome1-out').textContent = nome1;
+  document.getElementById('nome2-out').textContent = nome2;
+  var placeDate = local + ', ' + data + '.';
+  document.getElementById('place-date-out').textContent = placeDate;
+
+  document.getElementById('form-screen').style.display = 'none';
+  document.getElementById('doc-screen').style.display = 'block';
+  window.scrollTo(0, 0);
+}
+
+function voltarForm() {
+  document.getElementById('doc-screen').style.display = 'none';
+  document.getElementById('form-screen').style.display = 'block';
+  window.scrollTo(0, 0);
+}
+
+function baixarPdf() {
+  var btn = document.getElementById('download-btn');
+  var original = btn.textContent;
+  btn.textContent = 'Gerando PDF...';
+  btn.disabled = true;
+
+  var element = document.getElementById('pdf-target');
+  var opt = {
+    margin: 0,
+    filename: 'convencao-condominio-afetivo-ricardiana-assinada.pdf',
+    image: { type: 'jpeg', quality: 0.98 },
+    html2canvas: { scale: 2.5, useCORS: true, backgroundColor: '#fbf6ec' },
+    jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' },
+    pagebreak: { mode: ['css', 'avoid-all'] }
+  };
+
+  html2pdf().set(opt).from(element).save().then(function () {
+    btn.textContent = original;
+    btn.disabled = false;
+  }).catch(function () {
+    btn.textContent = original;
+    btn.disabled = false;
+  });
+}
+</script>
+
+
+<script>
+(function(){
+  var total = 16;
+  var fill = document.getElementById('progress-fill');
+  var label = document.getElementById('progress-label');
+  var medals = document.querySelectorAll('.medal');
+  var celebration = document.getElementById('celebration');
+
+  function updateGame(step) {
+    var done = Math.max(0, Math.min(total, step || 0));
+    var pct = Math.round((done / total) * 100);
+    if(fill) fill.style.width = pct + '%';
+    if(label) label.textContent = pct + '% concluído · ' + done + ' de ' + total + ' cláusulas';
+
+    var thresholds = [1,3,5,7,9,11,13,16];
+    var messages = [
+      '🏠 Primeira porta aberta! O condomínio já começou.',
+      '💬 Medalha da boa conversa conquistada!',
+      '🌎 Medalha de quem se dispõe a conhecer o mundo do outro!',
+      '🌷 Medalha da reconciliação: flores para o delegado!',
+      '🤝 Medalha da parceria: ninguém mora sozinho na relação.',
+      '🥂 Medalha do namoro: a rotina não ganhou de vocês.',
+      '✨ Medalha do encantamento: ainda há brilho nos olhos.',
+      '❤️ Aliança afetiva completa! Agora é continuar cultivando.'
+    ];
+    for(var i=0;i<medals.length;i++){
+      if(done >= thresholds[i]) medals[i].classList.add('unlocked');
+      else medals[i].classList.remove('unlocked');
+    }
+    for(var j=thresholds.length-1;j>=0;j--){
+      if(done === thresholds[j] && celebration){
+        celebration.textContent = messages[j];
+        celebration.classList.remove('show');
+        void celebration.offsetWidth;
+        celebration.classList.add('show');
+        break;
+      }
+    }
+  }
+
+  function detectStep(){
+    if(typeof currentClause !== 'undefined') {
+      updateGame(currentClause);
+    }
+  }
+
+  document.addEventListener('click', function(e){
+    var t = e.target;
+    if(!t) return;
+    var text = (t.textContent || '').toLowerCase();
+    if(text.indexOf('aceito') >= 0 || text.indexOf('próxima') >= 0 ||
+       text.indexOf('proxima') >= 0 || text.indexOf('começar') >= 0 ||
+       text.indexOf('comecar') >= 0 || text.indexOf('finalizar') >= 0){
+      setTimeout(detectStep, 80);
+    }
+  });
+
+  // Periodic fallback for pages that update currentClause without a click event.
+  setInterval(detectStep, 250);
+  updateGame(0);
+})();
+</script>
+</body>
+</html>
